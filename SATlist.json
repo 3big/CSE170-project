@@ -76,6 +76,60 @@
 			"word": "beautiful"		
 		},
 		{
+			"word": "love"		
+		},
+		{
+			"word": "considerate"		
+		},
+		{
+			"word": "truthful"		
+		},
+		{
+			"word": "sympathize"		
+		},
+		{
+			"word": "alert"		
+		},
+		{
+			"word": "retaliate"		
+		},
+		{
+			"word": "open"		
+		},
+		{
+			"word": "lackluster"		
+		},
+		{
+			"word": "saturate"		
+		},
+		{
+			"word": "stubborn"		
+		},
+		{
+			"word": "enchanted"		
+		},
+		{
+			"word": "arrogant"		
+		},
+		{
+			"word": "selfish"		
+		},
+		{
+			"word": "elegant"		
+		},
+		{
+			"word": "soulful"		
+		},
+		{
+			"word": "bland"		
+		},
+		{
+			"word": "innocuous"		
+		},
+		{
+			"word": "expressive"		
+		},
+		{
 			"word": "happy"
 		},
 		{
@@ -96,7 +150,7 @@
 			"size":"10"
 		},
 		{
-			"wrongsize":"6"
+			"wrongsize":"24"
 		}
 	]
 }

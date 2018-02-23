@@ -158,12 +158,45 @@
 			"word": "dangerous"
 		},
 		{
+			"word": "interesting"		
+		},
+		{
+			"word": "acidic"		
+		},
+		{
+			"word": "sharp"		
+		},
+		{
+			"word": "dull"		
+		},
+		{
+			"word": "tender"		
+		},
+		{
+			"word": "shallow"		
+		},
+		{
+			"word": "ashamed"		
+		},
+		{
+			"word": "homely"		
+		},
+		{
+			"word": "average"		
+		},
+		{
+			"word": "bright"		
+		},
+		{
+			"word": "helpless"		
+		},
+		{
 			"word": "nice"
 		}
 	],
 	"ListData": [
 		{
-			"size":"6"
+			"size":"17"
 		}
 	]
 }

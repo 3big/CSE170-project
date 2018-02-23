@@ -155,6 +155,66 @@
 			"word": "pursuasive"	
 		},
 		{
+			"word": "empty"		
+		},
+		{
+			"word": "repurpose"		
+		},
+		{
+			"word": "help"		
+		},
+		{
+			"word": "abandonment"		
+		},
+		{
+			"word": "rough"		
+		},
+		{
+			"word": "melt"		
+		},
+		{
+			"word": "encourage"		
+		},
+		{
+			"word": "defiant"		
+		},
+		{
+			"word": "thoughtful"		
+		},
+		{
+			"word": "early"		
+		},
+		{
+			"word": "subjective"		
+		},
+		{
+			"word": "kind"		
+		},
+		{
+			"word": "gentle"		
+		},
+		{
+			"word": "absent"		
+		},
+		{
+			"word": "sincere"		
+		},
+		{
+			"word": "sweet"		
+		},
+		{
+			"word": "nonchalant"		
+		},
+		{
+			"word": "complex"		
+		},
+		{
+			"word": "robust"		
+		},
+		{
+			"word": "terrible"		
+		},
+		{
 			"word": "dangerous"
 		},
 		{
@@ -163,7 +223,7 @@
 	],
 	"ListData": [
 		{
-			"size":"6"
+			"size":"26"
 		}
 	]
 }
