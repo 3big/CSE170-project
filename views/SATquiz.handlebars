@@ -71,7 +71,7 @@
 	{{#each SATvocabs}}
 	<div class="ui modal" id={{id}}>
 	  <div class="header">
-	    questions {{id}}:
+	    {{id}} questions left:
 	  </div>
 	  <div class="image content">
 	    <div class="description">
@@ -149,17 +149,19 @@
 		var counter = 0;
 		var i = 0;
 
-		//counter action when clicked on correct answer
+		//counter action when clicked on correct answer and incorrect answer
 		for(i=1; i<=20; i++){
+			//correct button action
 			$('#'+i+' #correct.button').click(function(){
 				counter = counter+1;
 				$('#score').html(counter+"/20");
 				alert("CORRECT!");
 				console.log(counter);
 			});
+			//incorrect button action
 			$('#'+i+' '+'[id^=incorrect]'+'.button').click(function(){
 				alert("EMMM...INCORRECT");
-				$('#score').html(counter+"/20");
+				$('#score').html(counter+"/10");
 			});
 		}
 
