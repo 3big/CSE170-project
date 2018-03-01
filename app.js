@@ -50,6 +50,7 @@ app.get('/manage',manage.view);
 app.get('/tutorial',tutorial.view);
 app.get('/reminder',reminder.view);
 app.get('/lists/:id',lists.listInfo);
+app.post('/lists/:id',lists.listInfo);
 
 // Example route
 // app.get('/users', user.list);

@@ -14,7 +14,7 @@
 	    Home
 	  </a>
 	  <div class="ui pointing dropdown link item">
-	    <span class="text">Account</span>
+	    <span class="text" id="username">Guest</span>
 	    <i class="dropdown icon"></i>
 	    <div class="menu">
 	      <div class="item">
@@ -23,18 +23,16 @@
 	        <div class="menu">
 	          <div class="header">Study List</div>
 	          <a href=SATlist><div class="item">SAT</div></a>
-	          <div class="item">GRE</div>
-	          <div class="item">IELTS</div>
-	          <div class="item">TOEFL</div>
+	          <a href=SATlist><div class="item">GRE</div></a>
+	          <a href=SATlist><div class="item">IELTS</div></a>
+	          <a href=SATlist><div class="item">TOEFL</div></a>
 	          <div class="divider"></div>
-	          <div class="header">Star List</div>
 	        </div>
 	      </div>
-	      <div class="item">Log out</div>
 	    </div>
 	  </div>
 	  <a class="item" href=tutorial>
-	    HELP
+	    Help
 	  </a>
 	  <a class="item" href=reminder>
 	    Study Reminder
@@ -54,7 +52,7 @@
       	<tr>
       	<td>{{word}}</td>
       	<td>{{definition}}</td>
-      	<td><div class="ui rating" data-max-rating="1"></div></td>
+      	<td><div class="ui rating" data-max-rating="1" data-rating="{{star}}"></div></td>
       	</tr>
     	{{/each}}
 	  </tbody>

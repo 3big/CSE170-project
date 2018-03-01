@@ -23,18 +23,16 @@
 	        <div class="menu">
 	          <div class="header">Study List</div>
 	          <a href=SATlist><div class="item">SAT</div></a>
-	          <div class="item">GRE</div>
-	          <div class="item">IELTS</div>
-	          <div class="item">TOEFL</div>
+	          <a href=SATlist><div class="item">GRE</div></a>
+	          <a href=SATlist><div class="item">IELTS</div></a>
+	          <a href=SATlist><div class="item">TOEFL</div></a>
 	          <div class="divider"></div>
-	          <div class="header">Star List</div>
 	        </div>
 	      </div>
-	      <div class="item">Log out</div>
 	    </div>
 	  </div>
 	  <a class="item" href=tutorial>
-	    HELP
+	    Help
 	  </a>
 	  <a class="item" href=reminder>
 	    Study Reminder
@@ -68,6 +66,8 @@
 	  </div>
 	</div>
 
+	<br/><br/><br/><br/><br/><br/><br/><br/>
+	<div><h1><center>YOU QUITTER!!!!</center><h1><div>
 	{{#each SATvocabs}}
 	<div class="ui modal" id={{id}}>
 	  <div class="header">
@@ -84,16 +84,16 @@
 	    </div>
 	  </div>
 	  <div class="actions" id="shuffle">
-			<div class="ui fluid black deny button" id="correct" style="width:200px">
+			<div class="ui fluid black deny button" id="correct" index="{{id}}" style="width:200px">
   				{{definition}}
 			</div>
-			<div class="ui fluid black deny button" id="incorrect1-{{id}}"" style="width:200px">
+			<div class="ui fluid black deny button" id="incorrect1-{{id}}"" index="{{id}}" style="width:200px">
   				Orange
 			</div>
-			<div class="ui fluid black deny button" id="incorrect2-{{id}}" style="width:200px">
+			<div class="ui fluid black deny button" id="incorrect2-{{id}}" index="{{id}}" style="width:200px">
   				Beautiful
 			</div>
-			<div class="ui fluid black deny button" id="incorrect3-{{id}}" style="width:200px">
+			<div class="ui fluid black deny button" id="incorrect3-{{id}}" index="{{id}}" style="width:200px">
   				Sad
 			</div>
 	    <!-- <div class="ui positive right labeled icon button" id="nextButton">
@@ -127,18 +127,16 @@
 		//drop down animation in menu
 		$('.ui.pointing.dropdown.link.item').dropdown();
 		//animation for quiz slides
-		$('.ui.modal').modal('setting', 'closable', false).modal('show');
+		$('.ui.modal').modal('setting', 'closable', true).modal('show');
 		//parse JSON
 		var jasonobj;
-			$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
-			//$.get("http://localhost:3000/lists/SAT", function(result){
+		//$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
+		$.get("http://localhost:3000/lists/SAT", function(result){
 			console.log(result["ListData"][0]);
 			jasonobj = result["WrongVocabs"];
 			//rendering worng options
 			var wrongsize = result["ListData"][1]["wrongsize"];
 			var listsize = result["ListData"][0]["size"];
-			console.log(wrongsize);
-			console.log(listsize);
 			for(var j=1; j<=listsize; j++){
 				for (var k=1; k<=3; k++){
 					$('.black.deny.button#incorrect'+k+"-"+j)
@@ -150,7 +148,7 @@
 		var i = 0;
 
 		//counter action when clicked on correct answer and incorrect answer
-		for(i=1; i<=20; i++){
+		for(i=1; i<=10; i++){
 			//correct button action
 			$('#'+i+' #correct.button').click(function(){
 				counter = counter+1;
@@ -161,6 +159,28 @@
 			//incorrect button action
 			$('#'+i+' '+'[id^=incorrect]'+'.button').click(function(){
 				alert("EMMM...INCORRECT");
+				var index = $(this).attr("index")-1;
+				//$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
+				$.post("http://localhost:3000/lists/SAT", function(result){
+					if(result["SATvocabs"][index]["star"]==0){
+						result.starWords.push(result["SATvocabs"][index]);
+					}
+					result["SATvocabs"][index]["star"]=1;
+					console.log(result["SATvocabs"][index]);
+					console.log(result["starWords"]);
+					//overwirte to server
+					$.ajax
+					    ({
+					        type: "POST",
+					        dataType : 'json',
+					        async: true,
+					        //url:'https://a7-vocabuddy.herokuapp.com/lists/SAT',
+					        url: 'http://localhost:3000/lists/SAT',
+					        data: { data: JSON.stringify(result) },
+					        success: function () {},
+					        failure: function() {}
+					    });
+				});
 				$('#score').html(counter+"/10");
 			});
 		}
