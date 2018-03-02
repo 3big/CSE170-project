@@ -48,6 +48,8 @@
 	    <p>You just complete your study session, your score is 
 	    	<h3 id='score'></h3>
 	    </p>     
+	    <p>Words you don't know are:</p>
+	    <div class="wrongList"></div>
 	    </div>
 	  </div>
 	  <div class="actions">
@@ -58,7 +60,7 @@
 		</a>
 		<a href=SATlist>
 	    	<div class="ui positive right labeled icon button">
-	    	  review list
+	    	  review full list
 	    	  <i class="checkmark icon"></i>
 	    	</div>
 	    </a>
@@ -130,8 +132,8 @@
 		$('.ui.modal').modal('setting', 'closable', true).modal('show');
 		//parse JSON
 		var jasonobj;
-		//$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
-		$.get("http://localhost:3000/lists/SAT", function(result){
+		$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
+		//$.get("http://localhost:3000/lists/SAT", function(result){
 			console.log(result["ListData"][0]);
 			jasonobj = result["WrongVocabs"];
 			//rendering worng options
@@ -160,8 +162,8 @@
 			$('#'+i+' '+'[id^=incorrect]'+'.button').click(function(){
 				alert("EMMM...INCORRECT");
 				var index = $(this).attr("index")-1;
-				//$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
-				$.post("http://localhost:3000/lists/SAT", function(result){
+				$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
+				//$.post("http://localhost:3000/lists/SAT", function(result){
 					if(result["SATvocabs"][index]["star"]==0){
 						result.starWords.push(result["SATvocabs"][index]);
 					}
@@ -174,8 +176,8 @@
 					        type: "POST",
 					        dataType : 'json',
 					        async: true,
-					        //url:'https://a7-vocabuddy.herokuapp.com/lists/SAT',
-					        url: 'http://localhost:3000/lists/SAT',
+					        url:'https://a7-vocabuddy.herokuapp.com/lists/SAT',
+					        //url: 'http://localhost:3000/lists/SAT',
 					        data: { data: JSON.stringify(result) },
 					        success: function () {},
 					        failure: function() {}
