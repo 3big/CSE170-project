@@ -48,8 +48,6 @@
 	    <p>You just complete your study session, your score is 
 	    	<h3 id='score'></h3>
 	    </p>     
-	    <p>Words you don't know are:</p>
-	    <div class="wrongList"></div>
 	    </div>
 	  </div>
 	  <div class="actions">
@@ -64,12 +62,15 @@
 	    	  <i class="checkmark icon"></i>
 	    	</div>
 	    </a>
+	    <div class="ui positive button">
+	    	  review what you get wrong
+	    </div>
 	    <br />
 	  </div>
 	</div>
 
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<div><h1><center>YOU QUITTER!!!!</center><h1><div>
+	<br/><br/><br/><br/><br/>
+	<div class="wrongList"><div>
 	{{#each SATvocabs}}
 	<div class="ui modal" id={{id}}>
 	  <div class="header">
@@ -132,7 +133,7 @@
 		$('.ui.modal').modal('setting', 'closable', true).modal('show');
 		//parse JSON
 		var jasonobj;
-		$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
+		$.get("https://a8-vocabuddy.herokuapp.com/lists/SAT", function(result){
 		//$.get("http://localhost:3000/lists/SAT", function(result){
 			console.log(result["ListData"][0]);
 			jasonobj = result["WrongVocabs"];
@@ -150,6 +151,7 @@
 		var i = 0;
 
 		//counter action when clicked on correct answer and incorrect answer
+		var tablelist="";
 		for(i=1; i<=10; i++){
 			//correct button action
 			$('#'+i+' #correct.button').click(function(){
@@ -162,7 +164,7 @@
 			$('#'+i+' '+'[id^=incorrect]'+'.button').click(function(){
 				alert("EMMM...INCORRECT");
 				var index = $(this).attr("index")-1;
-				$.get("https://a7-vocabuddy.herokuapp.com/lists/SAT", function(result){
+				$.get("https://a8-vocabuddy.herokuapp.com/lists/SAT", function(result){
 				//$.post("http://localhost:3000/lists/SAT", function(result){
 					if(result["SATvocabs"][index]["star"]==0){
 						result.starWords.push(result["SATvocabs"][index]);
@@ -176,12 +178,37 @@
 					        type: "POST",
 					        dataType : 'json',
 					        async: true,
-					        url:'https://a7-vocabuddy.herokuapp.com/lists/SAT',
+					        url:'https://a8-vocabuddy.herokuapp.com/lists/SAT',
 					        //url: 'http://localhost:3000/lists/SAT',
 					        data: { data: JSON.stringify(result) },
 					        success: function () {},
 					        failure: function() {}
 					    });
+					//update the summary page
+					$(".wrongList").html(
+						function(){
+							tablelist = tablelist +		      	
+								"<tr>" +
+							    "<td>"+result["SATvocabs"][index]["word"]+"</td>"+
+							    "<td>"+result["SATvocabs"][index]["definition"]+"</td>"+
+							    "</tr>";
+							console.log(tablelist);
+							var finalhtml = 
+								"<table class='ui celled unstackable table'>"+
+								  "<thead>"+
+								    "<tr>"+
+								    	"<th>Word</th>"+
+								    	"<th>Definition</th>"+
+								  	"</tr></thead>"+
+								  "<tbody>"+
+									tablelist+
+								  "</tbody>"+
+								  "<tfoot></tfoot>"+
+								"</table>";
+							console.log(finalhtml);
+							return finalhtml;
+						}
+					);
 				});
 				$('#score').html(counter+"/10");
 			});
