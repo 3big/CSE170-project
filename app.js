@@ -16,6 +16,8 @@ var manage = require('./routes/manage');
 var tutorial = require('./routes/tutorial');
 var reminder = require('./routes/reminder');
 var lists = require('./routes/lists');
+var pageA = require('./routes/page_A');
+var pageB = require('./routes/page_B');
 // Example route
 // var user = require('./routes/user');
 
@@ -51,6 +53,8 @@ app.get('/tutorial',tutorial.view);
 app.get('/reminder',reminder.view);
 app.get('/lists/:id',lists.listInfo);
 app.post('/lists/:id',lists.listInfo);
+app.get('/page_A', pageA.view);
+app.get('/page_B', pageB.view);
 
 // Example route
 // app.get('/users', user.list);
