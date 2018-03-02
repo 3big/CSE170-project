@@ -5,6 +5,7 @@
 	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 	  crossorigin="anonymous"></script>
 	<script src="semantic/dist/semantic.min.js"></script>
+	<script src="js/notify.js"></script>
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -40,7 +41,6 @@
 	</div>
 
 	<div class="ui modal" id=0>
-		<i class="close icon"></i>
 	  <div class="header">
 	    Study Session Complete
 	  </div>
@@ -74,7 +74,6 @@
 	<div class="wrongList"><div>
 	{{#each SATvocabs}}
 	<div class="ui modal" id={{id}}>
-		<i class="close icon"></i>
 	  <div class="header">
 	    {{id}} questions left:
 	  </div>
@@ -132,7 +131,7 @@
 		//drop down animation in menu
 		$('.ui.pointing.dropdown.link.item').dropdown();
 		//animation for quiz slides
-		$('.ui.modal').modal('setting', 'closable', false).modal('show');
+		$('.ui.modal').modal('setting', 'closable', true).modal('show');
 		//parse JSON
 		var jasonobj;
 		$.get("https://a8-vocabuddy.herokuapp.com/lists/SAT", function(result){
@@ -159,12 +158,14 @@
 			$('#'+i+' #correct.button').click(function(){
 				counter = counter+1;
 				$('#score').html(counter+"/10");
-				alert("CORRECT!");
+				//alert("CORRECT!");
+				$.notify("CORRECT","success");
 				console.log(counter);
 			});
 			//incorrect button action
 			$('#'+i+' '+'[id^=incorrect]'+'.button').click(function(){
-				alert("EMMM...INCORRECT");
+				//alert("EMMM...INCORRECT");
+				$.notify("INCORRECT","warn");
 				var index = $(this).attr("index")-1;
 				$.get("https://a8-vocabuddy.herokuapp.com/lists/SAT", function(result){
 				//$.post("http://localhost:3000/lists/SAT", function(result){
