@@ -160,14 +160,12 @@
 				$('#score').html(counter+"/10");
 				//alert("CORRECT!");
 				$.notify("CORRECT","success");
-				setTimeout(function(){$('.alert').alert('close')}, 2000);
 				console.log(counter);
 			});
 			//incorrect button action
 			$('#'+i+' '+'[id^=incorrect]'+'.button').click(function(){
 				//alert("EMMM...INCORRECT");
 				$.notify("INCORRECT","warn");
-				setTimeout(function(){$('.alert').alert('close')}, 3000);
 				var index = $(this).attr("index")-1;
 				$.get("https://a8-vocabuddy.herokuapp.com/lists/SAT", function(result){
 				//$.post("http://localhost:3000/lists/SAT", function(result){
