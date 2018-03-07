@@ -146,7 +146,7 @@
 		$(".ui.modal .close.icon").click(function(){
 			$(".ui.modal").modal("hideDimmer");
 			//register Google Analysis action
-			gtag("send", "event", "exit", "click");
+			ga("send", "event", "exit", "click");
 		});
 		//shuffle algorithm
 		$.fn.shuffleChildren = function() {
