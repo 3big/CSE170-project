@@ -133,7 +133,7 @@
 		$('.ui.modal').modal('setting', 'closable', true).modal('show');
 		//parse JSON
 		var jasonobj;
-		$.get("https://a8-vocabuddy.herokuapp.com/lists/SAT", function(result){
+		$.get("https://a9-vocabuddy.herokuapp.com/lists/SAT", function(result){
 		//$.get("http://localhost:3000/lists/SAT", function(result){
 			console.log(result["ListData"][0]);
 			jasonobj = result["WrongVocabs"];
@@ -164,7 +164,7 @@
 			$('#'+i+' '+'[id^=incorrect]'+'.button').click(function(){
 				alert("EMMM...INCORRECT");
 				var index = $(this).attr("index")-1;
-				$.get("https://a8-vocabuddy.herokuapp.com/lists/SAT", function(result){
+				$.get("https://a9-vocabuddy.herokuapp.com/lists/SAT", function(result){
 				//$.post("http://localhost:3000/lists/SAT", function(result){
 					if(result["SATvocabs"][index]["star"]==0){
 						result.starWords.push(result["SATvocabs"][index]);
@@ -178,7 +178,7 @@
 					        type: "POST",
 					        dataType : 'json',
 					        async: true,
-					        url:'https://a8-vocabuddy.herokuapp.com/lists/SAT',
+					        url:'https://a9-vocabuddy.herokuapp.com/lists/SAT',
 					        //url: 'http://localhost:3000/lists/SAT',
 					        data: { data: JSON.stringify(result) },
 					        success: function () {},
