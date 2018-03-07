@@ -67,6 +67,8 @@
 	  </a>
 	</div>
 
+	<div class="overlay" style="display: none;"></div>
+
 	<div class="ui modal" id=0>
 	  <div class="header">
 	    Study Session Complete
@@ -139,6 +141,10 @@
 
 
 	<script type="text/javascript">
+		//google analysis action
+		$('.overlay').on('click', function() {
+			gtag("send", "event", "exit", "click");
+		});
 		//shuffle algorithm
 		$.fn.shuffleChildren = function() {
 		    $.each(this.get(), function(index, el) {
@@ -244,15 +250,6 @@
 			});
 		}
 
-	</script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115291841-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-115291841-1');
 	</script>
   </body>
 </html>
