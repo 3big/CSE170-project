@@ -41,6 +41,7 @@
 	</div>
 
 	<div class="ui modal" id=0>
+		<p class="close icon"></p>
 	  <div class="header">
 	    Study Session Complete
 	  </div>
@@ -74,6 +75,7 @@
 	<div class="wrongList"><div>
 	{{#each SATvocabs}}
 	<div class="ui modal" id={{id}}>
+		<p class="close icon"></p>
 	  <div class="header">
 	    {{id}} questions left:
 	  </div>
@@ -112,6 +114,11 @@
 
 
 	<script type="text/javascript">
+		$(".ui.modal .close.icon").click(function(){
+			$(".ui.modal").modal("hideDimmer");
+			//register Google Analysis action
+			ga("send", "event", "exit", "click");
+		});
 		//shuffle algorithm
 		$.fn.shuffleChildren = function() {
 		    $.each(this.get(), function(index, el) {
@@ -131,7 +138,7 @@
 		//drop down animation in menu
 		$('.ui.pointing.dropdown.link.item').dropdown();
 		//animation for quiz slides
-		$('.ui.modal').modal('setting', 'closable', true).modal('show');
+		$('.ui.modal').modal('setting', 'closable', false).modal('show');
 		//parse JSON
 		var jasonobj;
 		$.get("https://a9-vocabuddy.herokuapp.com/lists/SAT", function(result){
