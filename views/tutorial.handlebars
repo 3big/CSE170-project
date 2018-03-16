@@ -7,9 +7,6 @@
 	<script src="semantic/dist/semantic.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/css/bootstrap-theme.css" rel="stylesheet">
-  <link href="/css/bootstrap.css" rel="stylesheet">
-  <link href="/css/introHCI.css" rel="stylesheet">
 </head>
 
 <body>
@@ -19,7 +16,7 @@
       Home
     </a>
     <div class="ui pointing dropdown link item">
-      <span class="text" id="username">Guest</span>
+      <span class="text">Account</span>
       <i class="dropdown icon"></i>
       <div class="menu">
         <div class="item">
@@ -27,12 +24,18 @@
           <span class="text">Quick Link</span>
           <div class="menu">
             <div class="header">Study List</div>
-            <a href=SATlist><div class="item">SAT</div></a>
-            <a href=SATlist><div class="item">GRE</div></a>
-            <a href=SATlist><div class="item">IELTS</div></a>
-            <a href=SATlist><div class="item">TOEFL</div></a>
+              <a href=SATlist><div class="item">SAT</div></a>
+              <a href=SATlist><div class="item">GRE</div></a>
+              <a href=SATlist><div class="item">IELTS</div></a>
+              <a href=SATlist><div class="item">TOEFL</div></a>
             <div class="divider"></div>
           </div>
+        </div>
+        <div class="item">
+          <p class="facebookLogin">
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+      </p>
         </div>
       </div>
     </div>
