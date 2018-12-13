@@ -6,4 +6,4 @@ A demo of web platform which offers fast vocabulary memorizing system with simpl
 Framework
 ====
 
-The whole program is built on Bootstrap framwork. Since it is all done with pure front end, the user experience and data integrity can be improve by utilizing database.
+The whole program is built on Bootstrap framwork. Since it is all done with pure front end, the user experience and data integrity can be improve by utilizing database in the future.
